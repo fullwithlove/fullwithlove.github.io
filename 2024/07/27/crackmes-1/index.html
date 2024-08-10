@@ -110,39 +110,39 @@
 <p>Crackme1 by majorsopa<br><a href="href">https://crackmes.one/crackme/661edbffcddae72ae250c8ae</a></p>
 <ul>
 <li>Platform: Windows</li>
-<li>Language: C&#x2F;C++</li>
-<li>Difficulty: 1.2&#x2F;5.0</li>
-<li>Quality: 3.4&#x2F;5.0</li>
+<li>Language: C/C++</li>
+<li>Difficulty: 1.2/5.0</li>
+<li>Quality: 3.4/5.0</li>
 </ul>
 <hr>
 <p>The crackme is named final.exe as you can see. As running it, it result as the following image.</p>
-<p><img src="/images/crackmes-1/overview.png"></p>
+<p><img src="/images/crackmes-1/overview.png" alt=""></p>
 <p>So, let’s import the crackme on to ghidra right away.</p>
-<p><img src="/images/crackmes-1/ghidra_analyze.png"></p>
-<p>As soon as the analyze finish, we get the entry part of the program.<br><img src="/images/crackmes-1/entry.png"></p>
+<p><img src="/images/crackmes-1/ghidra_analyze.png" alt=""></p>
+<p>As soon as the analyze finish, we get the entry part of the program.<br><img src="/images/crackmes-1/entry.png" alt=""></p>
 <p>I could have just gone to the FUN_140001131, but I chose to find some existing strings first.</p>
-<p><img src="/images/crackmes-1/strings.png"></p>
-<p>We can find some strings with a lot of gibberish and the string with the correct&#x2F;wrong password. Going to the location of the correct&#x2F;wrong password, we get;</p>
-<p><img src="/images/crackmes-1/cw.png"></p>
+<p><img src="/images/crackmes-1/strings.png" alt=""></p>
+<p>We can find some strings with a lot of gibberish and the string with the correct/wrong password. Going to the location of the correct/wrong password, we get;</p>
+<p><img src="/images/crackmes-1/cw.png" alt=""></p>
 <p>It looks like it’s referencing to the FUN_14000b1f0. Let’s go there.</p>
-<p><img src="/images/crackmes-1/decom.png"></p>
+<p><img src="/images/crackmes-1/decom.png" alt=""></p>
 <p>Aha! We can now find the strings we found earlier. Seems like the if statement is the password checking part.</p>
 <p>Also there is a FUN_14000148a function that does some operations. Let go to the decompiled part of it.</p>
-<p><img src="/images/crackmes-1/FUN_14000148a.png"></p>
+<p><img src="/images/crackmes-1/FUN_14000148a.png" alt=""></p>
 <p>Seems like it’s a function that is used for the enter password and the actual password generation. </p>
 <p>Let’s assume this FUN_14000148a is a calc function for key and message generation.</p>
 <p>So, if we want the key, we just need to</p>
-<p><img src="/images/crackmes-1/key.png"></p>
+<p><img src="/images/crackmes-1/key.png" alt=""></p>
 <p>make a simple code what this value is!</p>
 <p>I’ll open up visual studio(Sry, I’m bad at coding and don’t actually know how to properly use mingw and vscode) for this code.</p>
-<p><img src="/images/crackmes-1/code.png"></p>
+<p><img src="/images/crackmes-1/code.png" alt=""></p>
 <p>Viola! We got the decompiled code to visual studio. </p>
 <p>First, just let the calc function(FUN_14000148a) as it was.</p>
 <p>Then, made main to use the calc function and display the enter text and password.</p>
 <p>Let’s run it!</p>
-<p><img src="/images/crackmes-1/code_res.png"></p>
+<p><img src="/images/crackmes-1/code_res.png" alt=""></p>
 <p>Okay we now got the code! Let’s try it in the original crackme program.</p>
-<p><img src="/images/crackmes-1/total_res.png"></p>
+<p><img src="/images/crackmes-1/total_res.png" alt=""></p>
 <p>That’s it for this crackmes!</p>
 </article>
                         </main>
